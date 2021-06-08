@@ -6,14 +6,9 @@ from smartcard.CardMonitoring import CardMonitor, CardObserver
 from smartcard.Exceptions import CardConnectionException
 from smartcard.System import readers
 from smartcard.util import toHexString
-import ctypes
-from ctypes import wintypes
-import signal
 import asyncio
 import keyboard
-import threading
 import ahk
-import time
 import os
 global autohotkey
 try:                                                                                                                                                                         
