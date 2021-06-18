@@ -10,6 +10,8 @@ import asyncio
 import keyboard
 import ahk
 import os
+import subprocess 
+global imagen
 global autohotkey
 try:                                                                                                                                                                         
     autohotkey = ahk.AHK(executable_path="C:\\Program Files\\AutoHotkey\\AutoHotkeyU64.exe")                                                                                                                                                                           
@@ -33,6 +35,7 @@ class ObservaTarjeta(CardObserver):
 
             autohotkey.run_script('BlockInput,MouseMove', blocking=False)
             print("Bloqueando ")            
+            imagen = subprocess.Popen(['i_view64.exe','FondoV2.png', '/fs'])
 
 def comprobador(card):
     ATR=toHexString(card.atr)
@@ -47,7 +50,7 @@ def comprobador(card):
         os.system("taskkill /f /im  AutoHotKeyU64.exe")
         os.system("taskkill /f /im  AutoHotkeyU32.exe")
         print("Desbloqueando ")
-
+        imagen.terminate()
 
 
 
@@ -60,6 +63,8 @@ for i in range(150):
    
 autohotkey.run_script('BlockInput,MouseMove', blocking=False)
 print("Bloqueando ")
+imagen = subprocess.Popen(['i_view64.exe','FondoV2.png', '/fs'])
+
 cardmonitor = CardMonitor()
 cardobserver = ObservaTarjeta()
 cardmonitor.addObserver(cardobserver)
