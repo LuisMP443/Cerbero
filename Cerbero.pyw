@@ -51,6 +51,7 @@ def comprobador(card):
         os.system("taskkill /f /im  AutoHotkeyU32.exe")
         print("Desbloqueando ")
         imagen.terminate()
+        os.system("taskkill /f /im  i_view64.exe")
 
 
 
